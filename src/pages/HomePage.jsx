@@ -52,7 +52,7 @@ function HomePage() {
     <section className="w-full h-screen flex flex-col py-16 relative">
       <PopularCategory categories={categories} changeCategory={onChangeCategory} />
       <div className="flex-1">
-        <h1 className="text-2xl font-semibold text-white">Diskusi tersedia</h1>
+        <h1 className="text-2xl font-semibold text-white">Discussion available</h1>
         <ThreadItemList
           threads={filteredThreadList}
           like={onUpVote}

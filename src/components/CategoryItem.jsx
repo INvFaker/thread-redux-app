@@ -6,7 +6,7 @@ function CategoryItem({ category, changeCategory, selectedCategory }) {
     <button
       type="button"
       onClick={() => { changeCategory(category); }}
-      className={`py-1 px-2 rounded ${selectedCategory === category ? 'bg-gray-500' : 'bg-gray-100'}`}
+      className={`py-1 px-2 rounded ${selectedCategory === category ? 'bg-gray-500 text-white' : 'bg-gray-100'}`}
     >
       {`#${category}`}
     </button>
