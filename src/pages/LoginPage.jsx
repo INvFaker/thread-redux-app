@@ -23,7 +23,7 @@ function LoginPage() {
           <strong> The World</strong>
           ,
           <br />
-          Navigate With Thread App.
+          Navigate With Thread.
         </h2>
         <LoginInput login={onLogin} />
         <p className="mt-4">
