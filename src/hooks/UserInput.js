@@ -7,7 +7,7 @@ function UserInput(defaultValue = '') {
     setValue(target.value);
   }
 
-  return [value, handleValueChange];
+  return [handleValueChange];
 }
 
 export default UserInput;
