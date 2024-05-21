@@ -36,7 +36,7 @@ const fakeLeaderboardsResponse = [
 
 const fakeErrorResponse = new Error('Ups, something went wrong');
 
-describe('asyncPopulateUsersAndTalks thunk', () => {
+describe('asyncPopulateUsersAndThreads thunk', () => {
   beforeEach(() => {
     api._getLeaderboards = api.getLeaderboards;
   });
@@ -70,7 +70,7 @@ describe('asyncPopulateUsersAndTalks thunk', () => {
     // arrange
     // stub implementation
     api.getLeaderboards = () => Promise.reject(fakeErrorResponse);
-    api.getAllTalks = () => Promise.reject(fakeErrorResponse);
+    api.getAllThreads = () => Promise.reject(fakeErrorResponse);
     // mock dispatch
     const dispatch = vi.fn();
     // mock alert
