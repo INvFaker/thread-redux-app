@@ -2,39 +2,66 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import parse from 'html-react-parser';
 import {
-  AiFillDislike, AiFillLike, AiOutlineDislike, AiOutlineLike,
+  AiFillDislike,
+  AiFillLike,
+  AiOutlineDislike,
+  AiOutlineLike,
 } from 'react-icons/ai';
 import postedAt from '../utils';
+import CategoryItem from './CategoryItem';
 
 function DetailThreadItem({
-  owner, id, category, title, body, upVotesBy, downVotesBy,
-  createdAt, like, dislike, neutral, authUser,
-
+  owner,
+  id,
+  category,
+  title,
+  body,
+  upVotesBy,
+  downVotesBy,
+  createdAt,
+  like,
+  dislike,
+  neutral,
+  authUser,
 }) {
   const isThreadUpVote = upVotesBy.includes(authUser.id);
   const isThreadDownVote = downVotesBy.includes(authUser.id);
   return (
     <div className="flex flex-col gap-3 rounded-lg">
       <header>
-        <span className="px-1 p-0.5 border border-black rounded">
-          {`#${category}`}
-        </span>
+        <CategoryItem variant="outline">{category}</CategoryItem>
         <h4 className="block font-bold text-md text-blue-600 mt-3">{title}</h4>
       </header>
       <div>{parse(body)}</div>
       <footer className="flex justify-between">
         <div className="flex gap-3">
           {like && (
-          // eslint-disable-next-line no-unused-expressions
-          <button type="button" onClick={(e) => { e.stopPropagation(); isThreadUpVote ? neutral(id) : like(id); }} className="flex items-center">
-            {isThreadUpVote ? (<AiFillLike className="text-lg" />) : (<AiOutlineLike className="text-lg" />)}
+          <button
+            type="button"
+            // eslint-disable-next-line no-unused-expressions
+            onClick={(e) => { e.stopPropagation(); isThreadUpVote ? neutral(id) : like(id); }}
+            className="flex items-center"
+          >
+            {isThreadUpVote ? (
+              <AiFillLike className="text-lg" />
+            ) : (
+              <AiOutlineLike className="text-lg" />
+            )}
             {upVotesBy.length}
           </button>
           )}
           {dislike && (
-          // eslint-disable-next-line no-unused-expressions
-          <button type="button" onClick={(e) => { e.stopPropagation(); isThreadDownVote ? neutral(id) : dislike(id); }} className="flex items-center">
-            {isThreadDownVote ? (<AiFillDislike className="text-lg" />) : (<AiOutlineDislike className="text-lg" />)}
+          <button
+            type="button"
+            // eslint-disable-next-line no-unused-expressions
+            onClick={(e) => { e.stopPropagation(); isThreadDownVote ? neutral(id) : dislike(id); }}
+            className="flex items-center"
+          >
+            {isThreadDownVote ? (
+              <AiFillDislike className="text-lg" />
+            ) : (
+              <AiOutlineDislike className="text-lg" />
+            )}
             {downVotesBy.length}
           </button>
           )}

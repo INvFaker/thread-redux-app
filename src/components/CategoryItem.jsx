@@ -1,21 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function CategoryItem({ category, changeCategory, selectedCategory }) {
+function CategoryItem({
+  variant = 'filled',
+  children,
+  isActive = false,
+  ...props
+}) {
+  const baseStyles = 'py-1 px-2 rounded';
+  const activeStyles = isActive ? 'bg-blue-500 text-white' : 'bg-gray-100';
+  const variantStyles = {
+    filled: activeStyles,
+    outline: 'border border-black',
+  };
+
+  const buttonStyles = `${baseStyles} ${variantStyles[variant]}`;
+
   return (
     <button
       type="button"
-      onClick={() => { changeCategory(category); }}
-      className={`py-1 px-2 rounded ${selectedCategory === category ? 'bg-gray-500 text-white' : 'bg-gray-100'}`}
+      className={buttonStyles}
+      {...props}
     >
-      {`#${category}`}
+      {`#${children}`}
     </button>
   );
 }
 
 CategoryItem.propTypes = {
-  category: PropTypes.string.isRequired,
-  changeCategory: PropTypes.func.isRequired,
+  children: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  variant: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
+  category: PropTypes.string,
+  // eslint-disable-next-line react/require-default-props
+  isActive: PropTypes.bool,
+  // eslint-disable-next-line react/require-default-props
+  changeCategory: PropTypes.func,
   // eslint-disable-next-line react/require-default-props
   selectedCategory: PropTypes.string,
 };

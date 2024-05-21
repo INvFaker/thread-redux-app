@@ -7,6 +7,7 @@ import { BsReply } from 'react-icons/bs';
 import parse from 'html-react-parser';
 import { Link } from 'react-router-dom';
 import postedAt from '../utils';
+import CategoryItem from './CategoryItem';
 
 function ThreadItem({
   id, user, category, title, body, upVotesBy, downVotesBy,
@@ -18,9 +19,7 @@ function ThreadItem({
   return (
     <div className="flex flex-col gap-3 p-2 border border-gray-300 bg-gray-100 rounded-lg">
       <header>
-        <span className="px-1 p-0.5 border border-black rounded">
-          {`#${category}`}
-        </span>
+        <CategoryItem variant="outline">{category}</CategoryItem>
         <Link to={`threads/${id}`} className="block font-bold text-md  mt-3">{title}</Link>
       </header>
       <div className="line-clamp-6">{parse(body)}</div>

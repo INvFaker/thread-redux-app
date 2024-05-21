@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { MdHome, MdLeaderboard, MdLogout } from 'react-icons/md';
 import PropTypes from 'prop-types';
+import NavItem from './NavItem';
 
 function Navbar({ authUser, logout }) {
   const { id, avatar, name } = authUser;
@@ -9,18 +9,12 @@ function Navbar({ authUser, logout }) {
   return (
     <nav className="h-full flex flex-col gap-4 justify-between">
       <ul className="flex flex-col gap-2">
-        <li className="bg-gray-900 text-gray-300 rounded-lg">
-          <Link to="/" className="flex gap-2 items-center font-bold text-base px-6 py-3">
-            <MdHome className="w-6 h-6" />
-            Home
-          </Link>
-        </li>
-        <li className="border border-gray-300 bg-gray-100 rounded-lg">
-          <Link to="/leaderboards" className="flex gap-2 items-center font-bold text-base px-6 py-3">
-            <MdLeaderboard className="w-6 h-6" />
-            Leaderboards
-          </Link>
-        </li>
+        <NavItem link="/" icon={<MdHome className="w-6 h-6" />}>
+          Home
+        </NavItem>
+        <NavItem link="/leaderboards" icon={<MdLeaderboard className="w-6 h-6" />}>
+          Leaderboards
+        </NavItem>
       </ul>
       <ul className="flex flex-col gap-2">
         <li className="flex items-center gap-2 w-full px-6 py-3 rounded-lg bg-gray-100">
